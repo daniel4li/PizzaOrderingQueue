@@ -3,7 +3,7 @@ from SpecialtyPizza import SpecialtyPizza
 from PizzaOrder import PizzaOrder
 
 class QueueEmptyException(Exception):
-    def __init__(self, says = "No orders to remove"):
+    def __init__(self, says = "No orders"):
         self.says = says
     
 class OrderQueue:
@@ -19,15 +19,6 @@ class OrderQueue:
                 self.heaplist[i].setTime(temp)
             i = i // 2
 
-    def percDown(self,i):
-        while (i * 2) <= self.current:
-            m = self.minChild(i)
-            if self.heaplist[i].getTime() > self.heaplist[m].getTime():
-                temp = self.heaplist[i].getTime()
-                self.heaplist[i].setTime(self.heaplist[m].getTime())
-                self.heaplist[m].setTime(temp)
-            i = m
-
     def minChild(self,i):
         if i * 2 + 1 > self.current:
             return i * 2
@@ -36,6 +27,16 @@ class OrderQueue:
                 return i * 2
             else:
                 return i * 2 + 1
+
+    def percDown(self,i):
+        while (i * 2) <= self.current:
+            m = self.minChild(i)
+            if self.heaplist[i].getTime() > self.heaplist[m].getTime():
+                temp = self.heaplist[i].getTime()
+                self.heaplist[i].setTime(self.heaplist[m].getTime())
+                self.heaplist[m].setTime(temp)
+            i = m
+    
 
     def addOrder(self,a):
         self.heaplist.append(a)
@@ -52,23 +53,3 @@ class OrderQueue:
         self.percDown(1)
         return val.getOrderDescription()
 
-print("Testing pizza order")
-bh = OrderQueue()
-cp1 = CustomPizza("S")
-cp1.addTopping("extra cheese")
-cp1.addTopping("sausage")
-sp1 = SpecialtyPizza("S", "Carne-more")
-order = PizzaOrder(123000) #12:30:00PM
-order.addPizza(cp1)
-order.addPizza(sp1)
-cp1 = CustomPizza("M")
-cp1.addTopping("extra cheese")
-cp1.addTopping("sausage")
-sp1 = SpecialtyPizza("M", "Carne-more")
-order2 = PizzaOrder(113000) #12:30:00PM
-order2.addPizza(cp1)
-order2.addPizza(sp1)
-bh.addOrder(order)
-bh.addOrder(order2)
-print(bh.processNextOrder())
-print(bh.processNextOrder())

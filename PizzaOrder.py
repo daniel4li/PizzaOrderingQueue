@@ -16,24 +16,19 @@ class PizzaOrder(Pizza):
     def addPizza(self, pizza): 
         self.pizzas.append(pizza)
     
-    def getOrderDescription(self): 
+    def getOrderDescription(self):  
         a = "******" + "\n" + "Order Time: " + str(self.time) 
         b = "\n"
+        counter = 0
         for i in self.pizzas:
             c = i.getPizzaDetails() + "\n" + "----" + "\n"
             b += c
-        e = "TOTAL ORDER PRICE: " + "\n" + "******" + "\n"
+            counter = counter + i.getPrice()
+        
+        e = "TOTAL ORDER PRICE: $" +  str("{0:.2f}".format(counter, 2)) + "\n" + "******" + "\n"
         return a + b + e
 
-cp1 = CustomPizza("S")
-cp1.addTopping("extra cheese")
-cp1.addTopping("sausage")
-sp1 = SpecialtyPizza("S", "Carne-more")
-order = PizzaOrder(123000) #12:30:00PM
-order.addPizza(cp1)
-order.addPizza(sp1)
 
-print (order.getOrderDescription())
 
 
         
