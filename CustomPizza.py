@@ -27,7 +27,7 @@ class CustomPizza(Pizza):
             c = "\t"
             c += (i + "\n")
             b += c
-        d = "Price: $" + str(self.price) + "\n"
+        d = "Price: $" + str("{0:.2f}".format(self.price, 2)) + "\n"
         return a + b + d
 
     

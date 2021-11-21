@@ -22,8 +22,7 @@ class PizzaOrder(Pizza):
         for i in self.pizzas:
             c = i.getPizzaDetails() + "\n" + "----" + "\n"
             b += c
-            d = 0 + i.self.price 
-        e = "TOTAL ORDER PRICE: " + d + "\n" + "******" + "\n"
+        e = "TOTAL ORDER PRICE: " + "\n" + "******" + "\n"
         return a + b + e
 
 cp1 = CustomPizza("S")
