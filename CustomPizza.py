@@ -21,6 +21,17 @@ class CustomPizza(Pizza):
             self.price += 1.00
 
     def getPizzaDetails(self):
-        return "CUSTOM PIZZA" + "\n" + "Size: " + str(self.size) + "\n" + "Toppings: " + "\n" + 
+        a = "CUSTOM PIZZA" + "\n" + "Size: " + str(self.size) + "\n" 
+        b = "Toppings: " + "\n"
+        for i in self.topping:
+            c = "\t"
+            c += (i + "\n")
+            b += c
+        d = "Price: $" + str(self.price) + "\n"
+        return a + b + d
 
     
+cp1 = CustomPizza("L")
+cp1.addTopping("extra cheese")
+cp1.addTopping("sausage")
+print (cp1.getPizzaDetails())
