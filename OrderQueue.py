@@ -15,8 +15,8 @@ class OrderQueue:
         while i // 2 > 0:
             if self.heaplist[i].getTime() < self.heaplist[i // 2].getTime():
                 temp = self.heaplist[i // 2].getTime()
-                self.heaplist[i // 2].setTime(self.heaplist[i].getTime())
-                self.heaplist[i].setTime(temp)
+                self.heaplist[i // 2].setTime = self.heaplist[i].getTime()
+                self.heaplist[i].setTime = temp
             i = i // 2
 
     def minChild(self,i):
@@ -33,8 +33,8 @@ class OrderQueue:
             m = self.minChild(i)
             if self.heaplist[i].getTime() > self.heaplist[m].getTime():
                 temp = self.heaplist[i].getTime()
-                self.heaplist[i].setTime(self.heaplist[m].getTime())
-                self.heaplist[m].setTime(temp)
+                self.heaplist[i].setTime = self.heaplist[m].getTime()
+                self.heaplist[m].setTime = temp
             i = m
     
 
@@ -52,4 +52,5 @@ class OrderQueue:
         self.heaplist.pop()
         self.percDown(1)
         return val.getOrderDescription()
-
+    
+        
