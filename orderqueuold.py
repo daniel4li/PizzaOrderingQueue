@@ -14,9 +14,9 @@ class OrderQueue:
     def percUp(self, i):
         while i // 2 > 0:
             if self.heaplist[i].getTime() < self.heaplist[i // 2].getTime():
-                temp = self.heaplist[i // 2]
-                self.heaplist[i // 2] = self.heaplist[i]
-                self.heaplist[i] = temp
+                temp = self.heaplist[i // 2].getTime()
+                self.heaplist[i // 2].setTime(self.heaplist[i].getTime())
+                self.heaplist[i].setTime(temp)
             i = i // 2
 
     def minChild(self,i):
@@ -32,9 +32,9 @@ class OrderQueue:
         while (i * 2) <= self.current:
             m = self.minChild(i)
             if self.heaplist[i].getTime() > self.heaplist[m].getTime():
-                temp = self.heaplist[i]
-                self.heaplist[i] = self.heaplist[m]
-                self.heaplist[m] = temp
+                temp = self.heaplist[i].getTime()
+                self.heaplist[i].setTime(self.heaplist[m].getTime())
+                self.heaplist[m].setTime(temp)
             i = m
     
 
@@ -53,7 +53,7 @@ class OrderQueue:
         self.percDown(1)
         return val.getOrderDescription()
     
-""" bh = OrderQueue()
+bh = OrderQueue()
 cp1 = CustomPizza("S")
 cp1.addTopping("extra cheese")
 cp1.addTopping("sausage")
@@ -71,4 +71,4 @@ order2.addPizza(sp1)
 bh.addOrder(order)
 bh.addOrder(order2)
 print(bh.processNextOrder())
-print(bh.processNextOrder())    """
+print(bh.processNextOrder())        
